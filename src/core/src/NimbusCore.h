@@ -52,14 +52,34 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#ifdef NIMBUS_STATIC_LIBRARY
+// For when you're setting this library as a dependency in your project.
+#import "NimbusCore/NIBlocks.h"
+#import "NimbusCore/NICommonMetrics.h"
+//#import "NimbusCore/NIDataStructures.h"
+#import "NimbusCore/NIDebuggingTools.h"
+#import "NimbusCore/NIDeviceOrientation.h"
+#import "NimbusCore/NIFoundationMethods.h"
+//#import "NimbusCore/NIInMemoryCache.h"
+#import "NimbusCore/NINetworkActivity.h"
+#import "NimbusCore/NINonEmptyCollectionTesting.h"
+#import "NimbusCore/NINonRetainingCollections.h"
+#import "NimbusCore/NIOperations.h"
+#import "NimbusCore/NIPaths.h"
+#import "NimbusCore/NIPreprocessorMacros.h"
+#import "NimbusCore/NIRuntimeClassModifications.h"
+#import "NimbusCore/NISDKAvailability.h"
+//#import "NimbusCore/NIState.h"
+
+#else
+// For when you're directly including this library in your project.
 #import "NIBlocks.h"
 #import "NICommonMetrics.h"
-#import "NIDataStructures.h"
+//#import "NIDataStructures.h"
 #import "NIDebuggingTools.h"
 #import "NIDeviceOrientation.h"
-#import "NIError.h"
 #import "NIFoundationMethods.h"
-#import "NIInMemoryCache.h"
+//#import "NIInMemoryCache.h"
 #import "NINetworkActivity.h"
 #import "NINonEmptyCollectionTesting.h"
 #import "NINonRetainingCollections.h"
@@ -68,4 +88,5 @@
 #import "NIPreprocessorMacros.h"
 #import "NIRuntimeClassModifications.h"
 #import "NISDKAvailability.h"
-#import "NIState.h"
+//#import "NIState.h"
+#endif

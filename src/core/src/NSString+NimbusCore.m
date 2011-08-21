@@ -77,7 +77,7 @@ NI_FIX_CATEGORY_BUG(NSStringNimbusCore)
 - (NSDictionary*)queryContentsUsingEncoding:(NSStringEncoding)encoding {
   NSCharacterSet* delimiterSet = [NSCharacterSet characterSetWithCharactersInString:@"&;"];
   NSMutableDictionary* pairs = [NSMutableDictionary dictionary];
-  NSScanner* scanner = [[[NSScanner alloc] initWithString:self] autorelease];
+  NSScanner* scanner = [[NSScanner alloc] initWithString:self];
   while (![scanner isAtEnd]) {
     NSString* pairString = nil;
     [scanner scanUpToCharactersFromSet:delimiterSet intoString:&pairString];
@@ -110,12 +110,11 @@ NI_FIX_CATEGORY_BUG(NSStringNimbusCore)
  * Returns a string that has been escaped for use as a URL parameter.
  */
 - (NSString *)stringByAddingPercentEscapesForURLParameter {
-  return [(NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
-                                                              (CFStringRef)self,
+  return (__bridge NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+                                                              (__bridge CFStringRef)self,
                                                               NULL,
                                                               (CFStringRef)@";/?:@&=+$,",
-                                                              kCFStringEncodingUTF8)
-          autorelease];
+                                                              kCFStringEncodingUTF8);
 }
 
 

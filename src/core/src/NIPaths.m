@@ -28,7 +28,7 @@ NSString* NIPathForBundleResource(NSBundle* bundle, NSString* relativePath) {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 NSString* NIPathForDocumentsResource(NSString* relativePath) {
-  static NSString* documentsPath = nil;
+    NSString* documentsPath = nil;
   if (nil == documentsPath) {
     NSArray* dirs = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                                         NSUserDomainMask,
